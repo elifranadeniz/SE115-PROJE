@@ -1,0 +1,58 @@
+// Main.java — Students version
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Main {
+
+
+    static final int MONTHS = 12;
+    static final int DAYS = 28;
+    static final int COMMS = 5;
+
+    static String[] commodities = {"Gold", "Oil", "Silver", "Wheat", "Copper"};
+    static String[] months = {
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+    };
+
+    static int[][][] profitData = new int[MONTHS][DAYS][COMMS];
+
+    // ======== REQUIRED METHOD LOAD DATA (Students fill this) ========
+    public static void loadData() {
+
+        for (int m = 0; m < MONTHS; m++) {
+            String fileName = "Data_Files/" + months[m] + ".txt";
+
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(fileName));
+                String line;
+
+                while ((line = br.readLine()) != null) {
+
+                    String[] parts = line.split(",");
+
+                    int day = Integer.parseInt(parts[0]) - 1;
+                    String commodity = parts[1];
+                    int profit = Integer.parseInt(parts[2]);
+
+                    int cIndex = -1;
+                    for (int i = 0; i < COMMS; i++) {
+                        if (commodities[i].equals(commodity)) {
+                            cIndex = i;
+                            break;
+                        }
+                    }
+
+                    if (day >= 0 && day < DAYS && cIndex != -1) {
+                        profitData[m][day][cIndex] = profit;
+                    }
+                }
+
+                br.close();
+
+            } catch (IOException e) {
+
+            }
+        }
+    }}
