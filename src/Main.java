@@ -55,4 +55,27 @@ public class Main {
 
             }
         }
-    }}
+    }
+
+// ======== 10 REQUIRED METHODS (Students fill these) ========
+
+public static String mostProfitableCommodityInMonth(int month) {
+    if (month < 0 || month > 11) return "INVALID_MONTH";
+
+    int[] totals = new int[COMMS];
+
+    for (int day = 0; day < DAYS; day++) {
+        for (int c = 0; c < COMMS; c++) {
+            totals[c] += profitData[month][day][c];
+        }
+    }
+
+    int bestIndex = 0;
+    for (int i = 1; i < COMMS; i++) {
+        if (totals[i] > totals[bestIndex]) {
+            bestIndex = i;
+        }
+    }
+
+    return commodities[bestIndex] + " " + totals[bestIndex];
+}}
