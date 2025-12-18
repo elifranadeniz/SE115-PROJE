@@ -78,4 +78,20 @@ public static String mostProfitableCommodityInMonth(int month) {
     }
 
     return commodities[bestIndex] + " " + totals[bestIndex];
-}}
+}
+
+
+
+    public static int totalProfitOnDay(int month, int day) {
+        if (month < 0 || month > 11 || day < 1 || day > 28) {
+            return -99999;
+        }
+
+        int total = 0;
+        for (int c = 0; c < COMMS; c++) {
+            total += profitData[month][day - 1][c]; // array uyumu
+        }
+
+        return total;
+    }
+}
