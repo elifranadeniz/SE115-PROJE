@@ -89,9 +89,32 @@ public static String mostProfitableCommodityInMonth(int month) {
 
         int total = 0;
         for (int c = 0; c < COMMS; c++) {
-            total += profitData[month][day - 1][c]; // array uyumu
+            total += profitData[month][day - 1][c];
         }
 
         return total;
     }
-}
+
+
+    public static int commodityProfitInRange(String commodity, int fromDay, int toDay) {
+       if ( fromDay < 1 || toDay > 28 || fromDay > toDay )
+           return -99999;
+
+       int cIndex = -1;
+       for (int i = 0; i < COMMS; i++) {
+           if (commodities[i].equals(commodity)) {
+               cIndex = i;
+               break;
+           }
+       }
+        if (cIndex == -1)
+            return -99999;
+
+        int total = 0;
+        for (int m = 0; m < MONTHS; m++) {
+            for (int d = fromDay - 1; d <= toDay - 1; d++) {
+                total += profitData [m][d][cIndex];
+            }
+        }
+return total;
+}}
