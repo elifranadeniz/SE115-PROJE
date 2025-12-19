@@ -117,4 +117,34 @@ public static String mostProfitableCommodityInMonth(int month) {
             }
         }
 return total;
-}}
+}
+
+
+
+    public static int bestDayOfMonth(int month) {
+        if (month < 0 || month > 11) return -1;
+
+        int bestDay = 1;
+        int maxProfit = Integer.MIN_VALUE;
+
+        for (int day = 1; day <= DAYS; day++) {
+
+            int total = 0;
+
+            for (int c = 0; c < COMMS; c++) {
+                total += profitData[month][day - 1][c];
+            }
+
+            if (total > maxProfit) {
+                maxProfit = total;
+                bestDay = day;
+            }
+        }
+
+        return bestDay;
+    }
+
+
+
+
+}
