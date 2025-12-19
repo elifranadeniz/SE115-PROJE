@@ -145,6 +145,40 @@ return total;
     }
 
 
+    public static String bestMonthForCommodity(String comm) {
+        int cIndex = -1;
+        for (int i = 0; i < COMMS; i++) {
+            if (commodities[i].equals(comm)) {
+                cIndex = i;
+                break;
+            }
+        }
+        if (cIndex == -1)
+            return "INVALID_COMMODITY";
+
+        int maxProfit = Integer.MIN_VALUE;
+        int bestMonth = -1;
+
+        for (int m = 0; m < MONTHS; m++) {
+            int monthlyTotal = 0;
+
+            for (int d = 0; d < DAYS; d++) {
+                monthlyTotal += profitData[m][d][cIndex];
+    }
+
+            if (monthlyTotal > maxProfit) {
+                maxProfit = monthlyTotal;
+                bestMonth = m;
+            }
+        }
+        return months[bestMonth] + " " + maxProfit;
+    }
+
+
+
+
+
+
 
 
 }
