@@ -210,6 +210,34 @@ return maxStreak;
     }
 
 
+    public static int daysAboveThreshold(String comm, int threshold) {
+        int cIndex = -1;
+        for (int i = 0; i < COMMS; i++) {
+            if (commodities[i].equals(comm)) {
+                cIndex = i;
+                break;
+            }
+        }
+if (cIndex == -1)
+    return -1;
+
+int count = 0;
+
+for (int m = 0; m < MONTHS; m++) {
+   for (int d = 0; d < DAYS; d++) {
+       if (profitData[m][d][cIndex] > threshold) {
+           count++;
+       }
+   }
+}
+return count;
+
+
+
+    }
+
+
+
 
 
 
