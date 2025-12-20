@@ -259,6 +259,43 @@ return maxStreak;
         }
 
 
+    public static String compareTwoCommodities(String c1, String c2) {
+        int cIndex1 = -1;
+        int cIndex2 = -1;
+
+for (int i = 0; i < COMMS; i++) {
+    if (commodities[i].equals(c1)) cIndex1 = i;
+    if (commodities[i].equals(c2)) cIndex2 = i;
+}
+
+if (cIndex1 == -1 || cIndex2 == -1) return "INVALID_COMMODITY";
+
+int total1 = 0;
+int total2 = 0;
+
+for (int m = 0; m < MONTHS; m++) {
+    for (int d = 0; d < DAYS; d++) {
+        total1 += profitData[m][d][cIndex1];
+        total2 += profitData[m][d][cIndex2];
+    }
+}
+if (total1 > total2)
+    return c1 + " is better by " + (total1 - total2);
+if (total2 > total1)
+    return c2 + " is better by " + (total2 - total1);
+return "Equal";
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
