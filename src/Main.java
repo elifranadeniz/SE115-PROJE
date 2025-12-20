@@ -218,33 +218,55 @@ return maxStreak;
                 break;
             }
         }
-if (cIndex == -1)
-    return -1;
+        if (cIndex == -1)
+            return -1;
 
-int count = 0;
+        int count = 0;
 
-for (int m = 0; m < MONTHS; m++) {
-   for (int d = 0; d < DAYS; d++) {
-       if (profitData[m][d][cIndex] > threshold) {
-           count++;
-       }
-   }
-}
-return count;
-
-
-
+        for (int m = 0; m < MONTHS; m++) {
+            for (int d = 0; d < DAYS; d++) {
+                if (profitData[m][d][cIndex] > threshold) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
 
 
+        public static int biggestDailySwing(int month) {
+            if (month < 0 || month > 11)
+                return -99999;
 
+            int maxSwing = 0;
+            int prevTotal = 0;
 
-
-
-
+            for (int day = 0; day < DAYS; day++) {
+                int total = 0;
+                for (int c = 0; c < COMMS; c++) {
+                    total += profitData[month][day][c];
+                }
+                if (day > 0) {
+                    int diff = Math.abs(total - prevTotal);
+                    if (diff > maxSwing) {
+                        maxSwing = diff;
+                    }
+                }
+                prevTotal = total;
+            }
+            return maxSwing;
+        }
 
 
 
 
 }
+
+
+
+
+
+
+
+
