@@ -314,11 +314,13 @@ return "Week " + bestWeek;
     }
 
     public static void main(String[] args) {
+        loadData();
+        System.out.println("Data loaded – ready for queries");
     }
-
-
-
 }
+
+
+
 
 
 
