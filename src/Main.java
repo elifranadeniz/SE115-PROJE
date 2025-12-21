@@ -32,20 +32,27 @@ public class Main {
 
                     String[] parts = line.split(",");
 
-                    int day = Integer.parseInt(parts[0]) - 1;
-                    String commodity = parts[1];
-                    int profit = Integer.parseInt(parts[2]);
+                    if (parts.length < 3) continue;
 
-                    int cIndex = -1;
-                    for (int i = 0; i < COMMS; i++) {
-                        if (commodities[i].equals(commodity)) {
-                            cIndex = i;
-                            break;
+                    try {
+                        int day = Integer.parseInt(parts[0].trim()) - 1;
+                        String commodity = parts[1].trim();
+                        int profit = Integer.parseInt(parts[2].trim());
+
+                        int cIndex = -1;
+                        for (int i = 0; i < COMMS; i++) {
+                            if (commodities[i].equals(commodity)) {
+                                cIndex = i;
+                                break;
+                            }
                         }
-                    }
 
-                    if (day >= 0 && day < DAYS && cIndex != -1) {
-                        profitData[m][day][cIndex] = profit;
+                        if (day >= 0 && day < DAYS && cIndex != -1) {
+                            profitData[m][day][cIndex] = profit;
+                        }
+
+                    } catch (NumberFormatException e) {
+                        continue;
                     }
                 }
 
@@ -60,7 +67,8 @@ public class Main {
 // ======== 10 REQUIRED METHODS (Students fill these) ========
 
 public static String mostProfitableCommodityInMonth(int month) {
-    if (month < 0 || month > 11) return "INVALID_MONTH";
+    if (month < 0 || month > 11)
+        return "INVALID_MONTH";
 
     int[] totals = new int[COMMS];
 
@@ -122,7 +130,8 @@ return total;
 
 
     public static int bestDayOfMonth(int month) {
-        if (month < 0 || month > 11) return -1;
+        if (month < 0 || month > 11)
+            return -1;
 
         int bestDay = 1;
         int maxProfit = Integer.MIN_VALUE;
@@ -171,7 +180,7 @@ return total;
                 bestMonth = m;
             }
         }
-        return months[bestMonth] + " " + maxProfit;
+        return months[bestMonth];
     }
 
 
@@ -206,7 +215,6 @@ for (int m = 0; m < MONTHS; m++) {
     }
 }
 return maxStreak;
-
     }
 
 
