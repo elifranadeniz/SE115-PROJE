@@ -288,13 +288,33 @@ return "Equal";
 
 
 
+    public static String bestWeekOfMonth(int month) {
+        if ( month < 0 || month > 11)
+           return "INVALID_MONTH";
+int bestWeek = 1;
+        int maxProfit = Integer.MIN_VALUE;
 
+for (int week = 1; week <= 4; week++) {
 
+int total = 0;
+int startDay = (week -1) * 7;
+int endDay = startDay + 6;
 
+for ( int d = startDay; d <= endDay; d++) {
+    for (int c = 0; c < COMMS; c++) {
+        total += profitData[month][d][c];
+    }
+}
+if (total > maxProfit) {
+    maxProfit = total;
+    bestWeek = week;
+        }
+ }
+return "Week " + bestWeek;
+    }
 
-
-
-
+    public static void main(String[] args) {
+    }
 
 
 
