@@ -90,6 +90,7 @@ public static String mostProfitableCommodityInMonth(int month) {
 
 
 
+
     public static int totalProfitOnDay(int month, int day) {
         if (month < 0 || month > 11 || day < 1 || day > 28) {
             return -99999;
@@ -102,6 +103,9 @@ public static String mostProfitableCommodityInMonth(int month) {
 
         return total;
     }
+
+
+
 
 
     public static int commodityProfitInRange(String commodity, int fromDay, int toDay) {
@@ -129,6 +133,7 @@ return total;
 
 
 
+
     public static int bestDayOfMonth(int month) {
         if (month < 0 || month > 11)
             return -1;
@@ -152,6 +157,8 @@ return total;
 
         return bestDay;
     }
+
+
 
 
     public static String bestMonthForCommodity(String comm) {
@@ -182,6 +189,8 @@ return total;
         }
         return months[bestMonth];
     }
+
+
 
 
 
@@ -218,6 +227,8 @@ return maxStreak;
     }
 
 
+
+
     public static int daysAboveThreshold(String comm, int threshold) {
         int cIndex = -1;
         for (int i = 0; i < COMMS; i++) {
@@ -243,6 +254,8 @@ return maxStreak;
 
 
 
+
+
         public static int biggestDailySwing(int month) {
             if (month < 0 || month > 11)
                 return -99999;
@@ -265,6 +278,8 @@ return maxStreak;
             }
             return maxSwing;
         }
+
+
 
 
     public static String compareTwoCommodities(String c1, String c2) {
@@ -296,6 +311,7 @@ return "Equal";
 
 
 
+
     public static String bestWeekOfMonth(int month) {
         if ( month < 0 || month > 11)
            return "INVALID_MONTH";
@@ -320,6 +336,8 @@ if (total > maxProfit) {
  }
 return "Week " + bestWeek;
     }
+
+
 
     public static void main(String[] args) {
         loadData();
